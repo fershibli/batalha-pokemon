@@ -2,6 +2,9 @@
 public class Pokemon {
 	String nome;
 	int hptotal, hp,atk,def, level, expatual=0,expprox=0,exptotal=0;
+	String evonome;
+	int evohp, evoatk, evodef, evolvl=101;
+	boolean selvagem=true;
 		
 	Pokemon(String palavra,int vida,int ataque,int defesa, int nivel){
 		this.nome=palavra;
@@ -17,7 +20,17 @@ public class Pokemon {
 		}
 		this.expprox=(int)((Math.sqrt(this.level)*(this.level/2))+((this.atk+this.def+this.hp)/30));
 		this.hp=this.hptotal;
+		
 	}
+	
+	void atrelar(DataBasePokemon pkmn, int nivel){
+		evonome=pkmn.nome;
+		evohp=pkmn.hptotal;
+		evoatk=pkmn.atk;
+		evodef=pkmn.def;
+		evolvl=nivel;
+	}
+	
 	void mostrar(){
 		System.out.println(nome+" Nível: "+level);	
 		System.out.println("Vida: "+hp);
@@ -38,7 +51,7 @@ public class Pokemon {
 						System.out.println(nome+" ganhou "+(int)((pkmn.expprox+((pkmn.hp+pkmn.def+pkmn.atk)/30)+pkmn.level)/3)+" pontos de experiência!");
 						expatual+=(int)(pkmn.expprox+((pkmn.hp+pkmn.def+pkmn.atk)/30)+pkmn.level)/3;
 						exptotal+=(int)(pkmn.expprox+((pkmn.hp+pkmn.def+pkmn.atk)/30)+pkmn.level)/3;
-						while (expatual>expprox){
+						while (expatual>expprox && level<100){
 							expatual=expatual-expprox;
 							System.out.println(nome+" subiu para o nível "+(level+1)+"!");
 							level+=1;
@@ -49,6 +62,17 @@ public class Pokemon {
 							System.out.println("Vida + "+(int)(1+(level/20)+Math.sin(level+3)+Math.cos(level+3))+" = "+hptotal);
 							System.out.println("Ataque + "+(int)(2+Math.sin(level))+" = "+atk);
 							System.out.println("Defesa + "+(int)(2+Math.cos(level))+" = "+def);
+							if (evolvl<=level){
+								nome=evonome;
+								hptotal=evohp;
+								atk=evoatk;
+								def=evodef;
+								for (int relembrar=1; relembrar<level; relembrar+=1){
+									this.hptotal+=(int)(1+(relembrar/20)+Math.sin(relembrar+3)+Math.cos(relembrar+3));
+									this.atk+=(int)(2+Math.sin(relembrar));
+									this.def+=(int)(2+Math.cos(relembrar));
+								}
+							}
 						}
 					}
 				} else{
