@@ -9,9 +9,9 @@ public class Treinador {
 	Treinador (String red, Pokemon pokebola1, Pokemon pokebola2){
 		nome=red;
 		p1=pokebola1;
-		p1.selvagem=false;
+		p1.selvagem=1.5;
 		p2=pokebola2;
-		p2.selvagem=false;
+		p2.selvagem=1.5;
 	}
 	
 	void listar(){
@@ -30,7 +30,7 @@ public class Treinador {
 	}
 	
 	void pokebolavai(Pokemon pkmn){
-		if (pkmn.selvagem==true){
+		if (pkmn.selvagem==1){
 			System.out.println("Você lançou a pokebola!");
 			if (((pkmn.hptotal/pkmn.hp)+1)<aleatorio.nextInt(pkmn.hptotal)){
 				System.out.println("Conseguiu! Você capturou o "+pkmn.nome+"!");
@@ -72,14 +72,36 @@ public class Treinador {
 			System.out.println("Você não pode capturar o pokemon de alguém!");
 		}
 	}
-
-	void escolher(int pkmn1, int pkmn2, Treinador trnr){
+	
+	void mirar(Treinador trnr, int pkmn1, int pkmn2, int ataqueX){
 		if (pkmn1==1){
 			if (pkmn2==1){
-				p1.atacar(trnr.p1);
+				if (ataqueX==1){
+					p1.atacar1(trnr.p1);
+				}
+				if (ataqueX==2){
+					p1.atacar2(trnr.p1);
+				}
+				if (ataqueX==3){
+					p1.atacar3(trnr.p1);
+				}
+				if (ataqueX==4){
+					p1.atacar4(trnr.p1);
+				}
 			} else{
 				if (pkmn2==2){
-					p1.atacar(trnr.p2);
+					if (ataqueX==1){
+						p1.atacar1(trnr.p2);
+					}
+					if (ataqueX==2){
+						p1.atacar2(trnr.p2);
+					}
+					if (ataqueX==3){
+						p1.atacar3(trnr.p2);
+					}
+					if (ataqueX==4){
+						p1.atacar4(trnr.p2);
+					}
 				} else{
 					System.out.println("O outro treinador só tem dois pokemons! Escolha 1 ou 2.");
 				}
@@ -87,10 +109,32 @@ public class Treinador {
 		} else{
 			if (pkmn1==2){
 				if (pkmn2==1){
-					p2.atacar(trnr.p1);
+					if (ataqueX==1){
+						p2.atacar1(trnr.p1);
+					}
+					if (ataqueX==2){
+						p2.atacar2(trnr.p1);
+					}
+					if (ataqueX==3){
+						p2.atacar3(trnr.p1);
+					}
+					if (ataqueX==4){
+						p2.atacar4(trnr.p1);
+					}
 				} else{
 					if (pkmn2==2){
-						p2.atacar(trnr.p2);
+						if (ataqueX==1){
+							p2.atacar1(trnr.p2);
+						}
+						if (ataqueX==2){
+							p2.atacar2(trnr.p2);
+						}
+						if (ataqueX==3){
+							p2.atacar3(trnr.p2);
+						}
+						if (ataqueX==4){
+							p2.atacar4(trnr.p2);
+						}
 					} else{
 						System.out.println("O outro treinador só tem dois pokemons! Escolha 1 ou 2.");
 					}

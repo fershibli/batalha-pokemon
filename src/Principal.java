@@ -2,6 +2,7 @@
 public class Principal {
 	public static void main(String[] args){
 		DataBasePokemon[] fernandospc = new DataBasePokemon[156];
+		//dev midia - java magazine
 		fernandospc[0] = new DataBasePokemon("Chiaotzu", 0 , 35 , 55 , 30 , 50 , 40 , 90 , 20 , 101 );
 		fernandospc[1] = new DataBasePokemon("Bulbasaur", 1 , 45 , 49 , 49 , 65 , 65 , 45 , 16 , 2 );
 		fernandospc[2] = new DataBasePokemon("Ivysaur", 2 , 60 , 62 , 63 , 80 , 80 , 60 , 32 , 3 );
@@ -136,7 +137,7 @@ public class Principal {
 		fernandospc[131] = new DataBasePokemon("Lapras", 131 , 130 , 85 , 80 , 85 , 95 , 60 , 101 , 131 );
 		fernandospc[132] = new DataBasePokemon("Ditto", 132 , 48 , 48 , 48 , 48 , 48 , 48 , 101 , 132 );
 		fernandospc[133] = new DataBasePokemon("Eevee", 133 , 55 , 55 , 50 , 45 , 65 , 55 , 50 , 134 );
-		fernandospc[134] = new DataBasePokemon("Eveeon", 134 , 130 , 130 , 60 , 110 , 110 , 130 , 101 , 134 );
+		fernandospc[134] = new DataBasePokemon("Eveeon", 134 , 90 , 120 , 90 , 60 , 130 , 110 , 101 , 134 );
 		fernandospc[135] = new DataBasePokemon("Steelix", 208,  75 , 85 , 200 , 55 , 65 , 30 , 101 , 208 );
 		fernandospc[136] = new DataBasePokemon("Crobat", 169,  85 , 90 , 80 , 70 , 80 , 130 , 101 , 169 );
 		fernandospc[137] = new DataBasePokemon("Porygon", 137 , 65 , 60 , 70 , 85 , 75 , 40 , 101 , 137 );
@@ -156,17 +157,10 @@ public class Principal {
 		fernandospc[151] = new DataBasePokemon("Mew", 151 , 100 , 100 , 100 , 100 , 100 , 100 , 101 , 151 );
 		fernandospc[152] = new DataBasePokemon("Agumon", 900 , 39 , 52 , 43 , 60 , 50 , 65 , 16 , 901 );
 		fernandospc[153] = new DataBasePokemon("Greymon", 901 , 58 , 64 , 58 , 80 , 65 , 80 , 36 , 902 );
-		fernandospc[154] = new DataBasePokemon("Metalgreymon", 902 , 78 , 84 , 78 , 109 , 85 , 100 , 101 , 903 );
+		fernandospc[154] = new DataBasePokemon("Metalgreymon", 902 , 78 , 84 , 78 , 109 , 85 , 100 , 80 , 903 );
 		fernandospc[155] = new DataBasePokemon("Wargreymon", 903 , 106 , 110 , 90 , 154 , 90 , 130 , 101 , 903 );
-		fernandospc[155].criarpokemon(fernandospc, 50);
-		Pokemon wargreymon = fernandospc[155].pkmn;
-		fernandospc[150].criarpokemon(fernandospc, 50);
-		Pokemon mewtwo = fernandospc[150].pkmn;
-		wargreymon.atacar1(mewtwo);
-		mewtwo.atacar1(wargreymon);
-		wargreymon.atacar2(mewtwo);
-		mewtwo.atacar2(wargreymon);
-		wargreymon.atacar3(mewtwo);
-		mewtwo.atacar3(wargreymon);
+		Treinador heroi = new Treinador("Fernando",fernandospc[152].criarpokemon(fernandospc, 2),fernandospc[152].criarpokemon(fernandospc, 5));
+		heroi.listar();
+		heroi.mirar(heroi, 1, 2, 4);
 	}
 }
