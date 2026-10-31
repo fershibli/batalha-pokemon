@@ -22,6 +22,6 @@ Fernando Luiz Neme Chibli ([@fershibli](https://github.com/fershibli))
 
 ## Releases
 
-Builds are made by GitHub Actions (`.github/workflows/release.yml`) on macOS, Windows and Linux: each platform gets a zipped app image with its own Java runtime, plus a portable `BatalhaPokemon.jar` (`java -jar BatalhaPokemon.jar`). Push a tag such as `v1.0` (or run the workflow by hand) to publish a release.
+Builds are made by GitHub Actions (`.github/workflows/release.yml`) on macOS, Windows and Linux: each platform gets a zipped app image with its own Java runtime, plus a portable `BatalhaPokemon.jar` (`java -jar BatalhaPokemon.jar`). The macOS app is built on an Intel runner (`macos-15-intel`), so it runs on Intel Macs. Push a tag such as `v1.0` (or run the workflow by hand) to publish a release.
 
 The project also opens in Eclipse or NetBeans.
