@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Batalha Pokemon (2014)</title>
+<style>
+  html, body { margin: 0; background: #101418; color: #e8e8e8; font: 15px/1.5 "Segoe UI", system-ui, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px 16px; }
+  h1 { margin: 0 0 4px; font: 600 26px Consolas, "Cascadia Mono", monospace; color: #ffd84a; }
+  p { margin: 4px 0 14px; opacity: .85; }
+  .win { border: 1px solid #333; border-radius: 6px; overflow: hidden; box-shadow: 0 10px 30px #000a; }
+  .bar { background: #1f1f1f; padding: 6px 10px; font: 12px "Segoe UI", sans-serif; color: #ddd; display: flex; justify-content: space-between; align-items: center; }
+  .bar button { background: #2d2d2d; color: #eee; border: 1px solid #555; border-radius: 4px; padding: 2px 10px; cursor: pointer; font: inherit; }
+  #console { margin: 0; min-height: 360px; padding: 10px 12px; background: #000; color: #c0c0c0; font: 14px/1.35 Consolas, "Cascadia Mono", monospace; white-space: pre-wrap; }
+  #display { width: 1px; height: 1px; overflow: hidden; }
+  #status { font: 12px monospace; opacity: .6; margin-top: 8px; }
+  a { color: #7fb8ff; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Batalha Pokemon</h1>
+  <p>Primeiro esboço (fev/2014) de uma batalha Pokémon em Java, com as fórmulas de status por nível dos jogos originais e uma tabela dos 151 (mais a linha do Agumon). Não tem menu ainda: o programa cria um treinador, lista os Pokémon dele e testa um ataque, com acerto e desvio aleatórios. Roda aqui pelo <a href="https://cheerpj.com">CheerpJ</a>, uma JVM em WebAssembly.</p>
+  <div class="win"><div class="bar"><span>java Principal</span><button id="again" type="button">Rodar de novo</button></div><pre id="console"></pre></div>
+  <div id="display"></div>
+  <div id="status">Carregando a JVM...</div>
+  <p><a href="https://github.com/fershibli/batalha-pokemon">Código-fonte</a></p>
+</main>
+<script src="https://cjrtnc.leaningtech.com/3.0/cj3loader.js"></script>
+<script>
+  (async () => {
+    const status = document.getElementById('status');
+    const out = document.getElementById('console');
+    const jar = '/app' + location.pathname.replace(/[^/]*$/, '') + 'batalha-pokemon.jar';
+    try {
+      await cheerpjInit({ version: 8 });
+      cheerpjCreateDisplay(-1, -1, document.getElementById('display'));
+      const run = async () => {
+        out.textContent = '';
+        status.textContent = 'Rodando...';
+        await cheerpjRunJar(jar);
+        status.textContent = 'Fim.';
+      };
+      document.getElementById('again').onclick = run;
+      await run();
+    } catch (e) {
+      status.textContent = 'Erro ao iniciar: ' + e;
+    }
+  })();
+</script>
+</body>
+</html>

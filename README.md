@@ -6,7 +6,15 @@ The stats database started as hand-typed data (`DataBasePokemon`), before I foun
 
 ## History
 
-`v0` to `v3` (5-14 Feb 2014): from basic `Pokemon`/`Treinador` classes to the stats database and the full battle loop in `Principal`.
+`v0` to `v3` (5-14 Feb 2014): from basic `Pokemon`/`Treinador` classes to the stats database in `Principal`. There is no menu yet: `Principal` builds a trainer, lists his Pokemon and tries one attack.
+
+`v3` stopped halfway through a refactor: `DataBasePokemon` gained experience and EV fields, but the 156-row table still passes the old 10 values, so `src/` does not compile on its own. `fixes/DataBasePokemon.java` adds back a 10-value constructor (the new fields start at zero); the release and web builds compile `src/` with that file on top.
+
+## Run in the browser
+
+**[https://fershibli.github.io/batalha-pokemon/](https://fershibli.github.io/batalha-pokemon/)**
+
+The page runs the jar on [CheerpJ](https://cheerpj.com) (a JVM in WebAssembly) and shows the console output. Published by `.github/workflows/pages.yml`.
 
 ## Author
 

@@ -27,8 +27,9 @@ jobs:
       - name: Compile and package the jar
         shell: bash
         run: |
-          mkdir -p build/classes dist
-          javac --release 8 -encoding Cp1252 -d build/classes src/*.java
+          mkdir -p build/classes build/src dist
+          cp src/*.java build/src/ && cp fixes/*.java build/src/
+          javac --release 8 -encoding Cp1252 -d build/classes build/src/*.java
           jar cfe dist/BatalhaPokemon.jar Principal -C build/classes .
       - name: Native app image (bundles its own Java runtime)
         shell: bash
